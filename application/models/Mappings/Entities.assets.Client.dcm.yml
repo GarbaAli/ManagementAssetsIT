@@ -1,0 +1,53 @@
+Entities\assets\Client:
+  type: entity
+  table: client
+  fields:
+    codeClt:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      column: code_clt
+      generator:
+        strategy: IDENTITY
+    nomPrenomClt:
+      type: string
+      length: 255
+      fixed: true
+      nullable: true
+      column: nom_prenom_clt
+    fonctionClt:
+      type: string
+      length: 32
+      fixed: true
+      nullable: true
+      column: fonction_clt
+    staffClt:
+      type: string
+      length: 150
+      fixed: true
+      nullable: true
+      column: staff_clt
+    emailClt:
+      type: string
+      length: 32
+      fixed: true
+      nullable: true
+      column: email_clt
+    phoneClt:
+      type: string
+      length: 32
+      fixed: true
+      nullable: true
+      column: phone_clt
+  oneToOne:
+    codeDept:
+      targetEntity: Entities\assets\Departement
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        code_dept:
+          referencedColumnName: code_dept
+      orphanRemoval: false
+  lifecycleCallbacks: {  }

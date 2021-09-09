@@ -1,0 +1,77 @@
+Entities\assets\Materiel:
+  type: entity
+  table: materiel
+  fields:
+    idMateriel:
+      id: true
+      type: smallint
+      nullable: false
+      column: id_materiel
+      generator:
+        strategy: IDENTITY
+    codeMateriel:
+      type: string
+      length: 32
+      fixed: true
+      nullable: true
+      column: code_materiel
+    designation:
+      type: string
+      length: 150
+      fixed: true
+      nullable: true
+    serialNumber:
+      type: string
+      length: 32
+      fixed: true
+      nullable: true
+      column: serial_number
+    reference:
+      type: string
+      length: 32
+      fixed: true
+      nullable: true
+    numMac:
+      type: string
+      length: 32
+      fixed: true
+      nullable: true
+      column: num_mac
+    etat:
+      type: string
+      length: 32
+      fixed: true
+      nullable: true
+    service:
+      type: string
+      length: 32
+      fixed: true
+      nullable: true
+    derniereLocalisation:
+      type: string
+      length: 32
+      fixed: true
+      nullable: true
+      column: derniere_localisation
+    observation:
+      type: string
+      length: 255
+      fixed: true
+      nullable: true
+    statusMateriel:
+      type: string
+      length: 32
+      fixed: true
+      nullable: true
+      column: status_materiel
+  oneToOne:
+    idFamille:
+      targetEntity: Entities\assets\Famille
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        id_famille:
+          referencedColumnName: id_famille
+      orphanRemoval: false
+  lifecycleCallbacks: {  }

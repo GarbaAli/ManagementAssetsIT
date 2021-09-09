@@ -1,0 +1,32 @@
+Entities\assets\UserRole:
+  type: entity
+  table: user_role
+  fields:
+    idUserRole:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      column: id_user_role
+      generator:
+        strategy: IDENTITY
+  oneToOne:
+    idRole:
+      targetEntity: Entities\assets\Role
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        id_role:
+          referencedColumnName: id_role
+      orphanRemoval: false
+    idUser:
+      targetEntity: Entities\assets\User
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        id_user:
+          referencedColumnName: id_user
+      orphanRemoval: false
+  lifecycleCallbacks: {  }

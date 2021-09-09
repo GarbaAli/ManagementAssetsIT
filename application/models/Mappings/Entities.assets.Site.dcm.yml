@@ -1,0 +1,19 @@
+Entities\assets\Site:
+  type: entity
+  table: site
+  fields:
+    codeSite:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      column: code_site
+      generator:
+        strategy: IDENTITY
+    libelleSite:
+      type: string
+      length: 150
+      fixed: true
+      nullable: true
+      column: libelle_site
+  lifecycleCallbacks: {  }

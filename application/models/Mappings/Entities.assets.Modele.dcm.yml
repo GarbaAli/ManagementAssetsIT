@@ -1,0 +1,19 @@
+Entities\assets\Modele:
+  type: entity
+  table: modele
+  fields:
+    idModele:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      column: id_modele
+      generator:
+        strategy: IDENTITY
+    libelleModele:
+      type: string
+      length: 200
+      fixed: true
+      nullable: true
+      column: libelle_modele
+  lifecycleCallbacks: {  }

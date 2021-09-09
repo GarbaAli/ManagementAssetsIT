@@ -1,0 +1,32 @@
+Entities\assets\Utiliser:
+  type: entity
+  table: utiliser
+  fields:
+    idMatClt:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      column: id_mat_clt
+      generator:
+        strategy: IDENTITY
+  oneToOne:
+    codeClt:
+      targetEntity: Entities\assets\Client
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        code_clt:
+          referencedColumnName: code_clt
+      orphanRemoval: false
+    idMateriel:
+      targetEntity: Entities\assets\Materiel
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        id_materiel:
+          referencedColumnName: id_materiel
+      orphanRemoval: false
+  lifecycleCallbacks: {  }

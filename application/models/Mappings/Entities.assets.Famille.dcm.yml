@@ -1,0 +1,19 @@
+Entities\assets\Famille:
+  type: entity
+  table: famille
+  fields:
+    idFamille:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      column: id_famille
+      generator:
+        strategy: IDENTITY
+    libelleFamille:
+      type: string
+      length: 200
+      fixed: true
+      nullable: false
+      column: libelle_famille
+  lifecycleCallbacks: {  }

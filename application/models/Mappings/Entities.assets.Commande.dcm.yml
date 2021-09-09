@@ -1,0 +1,46 @@
+Entities\assets\Commande:
+  type: entity
+  table: commande
+  fields:
+    idCmd:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      column: id_cmd
+      generator:
+        strategy: IDENTITY
+    qteCmd:
+      type: integer
+      unsigned: false
+      nullable: true
+      column: qte_cmd
+  oneToOne:
+    idFamille:
+      targetEntity: Entities\assets\Famille
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        id_famille:
+          referencedColumnName: id_famille
+      orphanRemoval: false
+    idModele:
+      targetEntity: Entities\assets\Modele
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        id_modele:
+          referencedColumnName: id_modele
+      orphanRemoval: false
+    idPo:
+      targetEntity: Entities\assets\Po
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        id_po:
+          referencedColumnName: id_po
+      orphanRemoval: false
+  lifecycleCallbacks: {  }
