@@ -7,12 +7,12 @@
             <div class="col-md-6">
             <div class="card" style="margin-top:10%; padding: 25px;">
                     <div class="card-header border-2">
-                    <span>Ajouter une Modele</span>
+                    <span>Ajouter un Model materiel</span>
                     </div>
                     <form method="POST" action="<?= site_url('model_controlleur/store'); ?>" style="margin-top: 10px;">
                         <div class="form-row align-items-center">
                             <div class="col-auto">
-                            <label class="sr-only" for="inlineFormInputGroup">Modele</label>
+                            <label class="sr-only" for="inlineFormInputGroup">Model</label>
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend">
                                 <div class="input-group-text"></div>
@@ -49,10 +49,8 @@
                         <td><?= $modele->getIdModele() ?></td>
                         <td><?= $modele->getLibelleModele() ?></td>
                         <td>
-                            <div class="d-flex justify-content-between">
-                            <a href="#" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
-                            <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                            </div>
+                            <?= anchor("model_controlleur/delete/{$modele->getIdModele()}", 'Modifier', ['class'=> 'btn btn-outline-dark btn-sm']); ?>
+                            <?= anchor("model_controlleur/delete/{$modele->getIdModele()}", 'Delete', ['class'=> 'btn btn-outline-dark btn-sm']); ?>
                         </td>
                         </tr>
                         <?php } ?>

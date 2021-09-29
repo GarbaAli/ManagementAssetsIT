@@ -11,54 +11,70 @@ class familleControlleur extends CI_Controller
 
         $this->load->helper('url');
         $this->load->library('form_validation');
-        $this->load->library('doctrine');
         // $this->load->library('session');
-        $this->load->model('familleModel');
-    }
-
-    public function create()
-    {
-        $this->load->view('formulaire');
-    }
-
-    public function store()
-    {
-       //Validation du formulaire
-       $this->form_validation->set_rules('famille',  '"Famille"',  'trim|required|min_length[3]|max_length[25]');
-      
-
-       if($this->form_validation->run())
-       {
-           // Recuperation des donnees du formulaire
-           $famille = $this->input->post('famille');
-          
-
-            $this->familleModel->add_famille($famille);
-
-            $familles = $this->familleModel->all_famille();
-            $this->load->view('layouts/menu');
-            $this->load->view('famille/index', array('familles'=> $familles));
-
-       }else{
-           // $this->session->set_flashdata('message', 'Vous avez des erreurs');
-           // echo $this->session->message;
-           $familles = $this->familleModel->all_famille();
-           $this->load->view('layouts/menu');
-           $this->load->view('famille/index', array('familles'=> $familles));
-       }
+        $this->load->model('Famille_model');  
     }
 
     public function index()
     {
-        $familles = $this->familleModel->all_famille();
-        // $count_famille = $this->familleModel->nb_famille();
+        // $familles = $this->Famille_model->liste_famille();
+        // $count_famille = $this->Famille_model->count_famille();
         $this->load->view('layouts/menu');
-        $this->load->view('famille/index', array('familles'=> $familles));
+        $this->load->view('famille/index');
+    }
+
+    public function store()
+    {
+        $isExist = $this->Famille_model->checkFamille();
+        $msg['success'] = false;
+        if ($isExist) {
+            $msg['success'] = false;
+        }else{
+            $result = $this->Famille_model->addFamille();
+            $msg['type'] = 'add';
+            if ($result) {
+                $msg['success'] = true;
+            }
+        }
+        echo json_encode($msg);
+    }
+
+
+    public function listeFamille()
+    {
+        $result = $this->Famille_model->liste_famille();
+        echo json_encode($result);
     }
     
-    public function delete($famille_id)
+    public function deleteFamille()
     {
-        $this->familleModel->deletes($famille_id);
-        return redirect()->back();
+        $result = $this->Famille_model->deleteFamille();
+        $msg['success'] = true;
+        if ($result) {
+            $msg['success'] = true;
+        }
+        echo json_encode($msg);
+    }
+
+    public function editFamille()
+    {
+        $result = $this->Famille_model->editFamille();
+        echo json_encode($result);
+    }
+
+    public function updateFamille()
+    {
+        $isExist = $this->Famille_model->checkFamille();
+        $msg['success'] = false;
+        if ($isExist) {
+            $msg['success'] = false;
+        }else{
+            $result = $this->Famille_model->updateFamille();
+            $msg['type'] = 'add';
+            if ($result) {
+                $msg['success'] = true;
+            }
+        }
+        echo json_encode($msg);
     }
 }

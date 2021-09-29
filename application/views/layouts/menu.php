@@ -8,15 +8,14 @@
 
     <!-- Mes styles-->
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/DataTables/media/css/jquery.dataTables.min.css') ?>">
     <script src="<?= base_url('assets/DataTables/media/js/jquery.js') ?>"></script>
     <script src="<?= base_url('assets/DataTables/media/js/jquery.dataTables.min.js') ?>"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-    <link rel="stylesheet" href=" https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" type="text/css">
+    
 </head>
 
-<body>
+<body style="background-color:#bacce5">
 
 <!-- My Side Barre -->
 <div class="sideBarre">
@@ -27,17 +26,15 @@
             <ul>
                 <li><a href="<?= base_url('assets_it.php') ?>">Tableau de bord</a></li>
                 <hr><strong style="color:#7e9bc3;font: size 18px;">Assets</strong>
-                <li><a href="#">Commandes</a></li>
-                <li><a href="#">Flux Materiels</a></li>
-                <li><a href="#">Inventaires</a></li>
+                <li><a href="<?= base_url('assets_it.php/cmdControlleur/index') ?>">Commandes</a></li>
+                <li><a href="<?= base_url('assets_it.php/inventaireControlleur/index') ?>">Suivi Assets</a></li>
                 <hr><strong style="color:#7e9bc3;font: size 18px;">Parametres</strong>
                 <!-- Sites et Departement -->
-                <li><a href="#">Localisation</a></li> 
-                <li><a href="<?= base_url('assets_it.php/familleControlleur/index') ?>">Materiels</a></li>
-                <li><a href="#">Fournisseurs</a></li>
+                <li><a href="<?= base_url('assets_it.php/siteControlleur/index') ?>">Localisation</a></li>
+                <li><a href="<?= base_url('assets_it.php/familleControlleur/index') ?>">Famille Materiels</a></li>
+                <li><a href="<?= base_url('assets_it.php/fsseurControlleur/index') ?>">Fournisseurs</a></li>
                 <hr><strong style="color:#7e9bc3;font: size 18px;">Administration</strong>
-                <li><a href="#">Clients</a></li>
-                <li><a href="<?= base_url('assets_it.php/technicienControlleur/index') ?>">Utilisateurs</a></li>
+                <li><a href="#">Utilisateurs</a></li>
                 <li><a href="#">Roles</a></li>
                 
             </ul>
