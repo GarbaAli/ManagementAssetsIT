@@ -209,7 +209,7 @@
                 });
             }
 
-              //Ajouter
+              //Ajouter Famille
             // -----------------------------------------------------------------------------------
             $('#saveFamille').click(function(e){
                 e.preventDefault();
@@ -255,7 +255,7 @@
                 }
             });
 
-            // Fucntion qui recupere les donnees en bd (Liste)
+            // Fucntion qui recupere les donnees en bd (Liste Cmd)
             function listeItems(){
                 var id = $('#commande').attr('data');
             $.ajax({

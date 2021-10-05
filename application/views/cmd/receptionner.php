@@ -21,12 +21,6 @@
                                         <label for="">Serial Number:</label>
                                         <input type="text" name="sn<?= $i ?>" class="form-control" value="">
                                     </div>
-
-                                    <div class="form-group col-md-4">
-                                        <label for="">Reference:</label>
-                                        <input type="text" name="reference<?= $i ?>" class="form-control" value="">
-                                    </div>
-
                                     <div class="form-group col-md-4">
                                         <label for="">Num.Mac:</label>
                                         <input type="text" name="mac<?= $i ?>" class="form-control" value="">
@@ -77,7 +71,6 @@
                 //valider le formulaire
 
                 var sn = $('input[name=sn'+id+']');
-                var reference = $('input[name=reference'+id+']');
                 var mac = $('input[name=mac'+id+']');
                 var modele = $('input[name=modele'+id+']');
                 var item = $('input[name=item'+id+']');

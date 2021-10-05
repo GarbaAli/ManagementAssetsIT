@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Famille Materiels</title>
+    <title>Inventaire Assets</title>
 
     <!-- Mes styles-->
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
@@ -34,8 +34,8 @@
                 <li><a href="<?= base_url('assets_it.php/familleControlleur/index') ?>">Famille Materiels</a></li>
                 <li><a href="<?= base_url('assets_it.php/fsseurControlleur/index') ?>">Fournisseurs</a></li>
                 <hr><strong style="color:#7e9bc3;font: size 18px;">Administration</strong>
-                <li><a href="#">Utilisateurs</a></li>
-                <li><a href="#">Roles</a></li>
+                <li><a href="<?= base_url('assets_it.php/userControlleur/index') ?>">Utilisateurs</a></li>
+                <li><a href="<?= base_url('assets_it.php/roleControlleur/index') ?>">Roles</a></li>
                 
             </ul>
         </div>

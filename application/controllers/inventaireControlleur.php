@@ -13,9 +13,6 @@ class inventaireControlleur extends CI_Controller
 
     public function index()
     {
-        // $result = $this->inventaireModel->showAllMateriel();
-        // var_dump($result);
-        // die();
         $this->load->view('layouts/menu');
         $this->load->view('inventaires/index');
     }
@@ -60,12 +57,39 @@ class inventaireControlleur extends CI_Controller
         echo json_encode($msg);
     }
 
+    public function affectation()
+    {
+        $result = $this->inventaireModel->affectation();
+        $msg['type'] = 'add';
+        $msg['success'] = false;
+        if ($result) {
+            $msg['success'] = true;
+        }
+        echo json_encode($msg);
+    }
+
+    public function materielSite()
+    {
+        $result = $this->inventaireModel->materielSite();
+        echo json_encode($result);
+    }
+
     
 
     public function editMateriel()
     {
         $result = $this->inventaireModel->editer_Materiel();
         echo json_encode($result);
+    }
+
+    public function RecupererMateriel()
+    {
+        $result = $this->inventaireModel->RecupererMateriel();
+        $msg['success'] = false;
+        if ($result) {
+            $msg['success'] = true;
+        }
+        echo json_encode($msg);
     }
 
     public function updateMateriel()
