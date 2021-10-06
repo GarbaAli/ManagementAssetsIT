@@ -5,11 +5,11 @@
         <div class="row">           
             <div class="col-md-12">
 
-            <div class="card" style="margin-top:2%; padding: 25px;">
+            <div id="myform" class="card d-none" style="margin-top:2%; padding: 25px;">
                     <div class="card-header border-2">
-                    <span>Nouveau user</span>
+                    <span>Nouveau Utilisateur</span>
                     </div>
-                    <form id="myform" class="needs-validation" method="POST" action="<?= site_url('userControlleur/store'); ?>">
+                    <form id="formAddUser" class="needs-validation" method="POST" action="<?= site_url('utilisateurController/store'); ?>">
                          <input type="hidden" name="userId" value="0">
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
@@ -33,28 +33,86 @@
                         </div>
                         <div class="form-row">
                             <div class="col-md-4 mb-3">
-                            <label for="validationCustom03">Phone 1</label>
-                            <input type="text" name="phone1" class="form-control" id="validationCustom03" placeholder="6xxx" value="">
+                            <label for="validationCustom03">Phone</label>
+                            <input type="text" name="phone1" class="form-control" id="validationCustom03" value="">
                             <div>
                             <span id="errorPhone1"  style="color:red;font-style:italic"></span>
                             </div>
                             </div>
 
                             <div class="col-md-4 mb-3">
-                            <label for="validationCustom03">Phone 2</label>
-                            <input type="text" name="phone2" class="form-control" id="validationCustom03" placeholder="6xxx" value="">
-                            <span id="errorPhone2"  style="color:red;font-style:italic" ></span>
-                            <div class="invalid-feedback">
+                                <label for="validationCustom03">Fonction</label>
+                                <input type="text" name="fonction" class="form-control" id="validationCustom03" value="">
+                                <span id="errorPhone2"  style="color:red;font-style:italic" ></span>
                             </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label for="validationCustom03">Staff</label>
+                                <input type="text" name="staff" class="form-control" id="validationCustom03" value="">
+                                <span id="errorPhone2"  style="color:red;font-style:italic" ></span>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="">Departement:</label>
+                                <div class="d-flex">
+                                <select name="departement" id="showdataDepartement" class="form-control">
+                                </select>
+                                    <button id="addDepartement" style="border-radius:50px; margin-left:10px" class="btn btn-dark btn-sm">+</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="ckeckRole">Donner des droit a cette Utilisateur</label>
+                                <input type="checkbox" id="ckeckRole">
+                            </div>
+
+                            <div id="inputRole" class="form-group col-md-3 d-none">
+                                <label for="">Role:</label>
+                                <div class="d-flex">
+                                <select name="role" id="showdataRole" class="form-control">
+                                </select>
+                                    <button id="addRole" style="border-radius:50px; margin-left:10px" class="btn btn-dark btn-sm">+</button>
+                                </div>
                             </div>
                         </div>
                         <button id="saveuser" class="btn btn-outline-dark" type="submit">Valider</button>
+                        <button id="annuler" class="btn btn-outline-danger">Annuler</button>
+                    </form>
+                    <!-- ------------------------------------------------------------------------------------------------------------------------- -->
+                     <!-- Formulaire d'ajout dun nouveau role -->
+                     <form class="d-none" id="formAddRole" action="<?= site_url('roleControlleur/addrole'); ?>" method="post">
+                    <hr style="background-color:grey">
+                        <strong>Ajouter un role</strong>
+                        <div class="d-flex col-md-8">
+                            <input type="text" name="role" placeholder="Libelle role" class="form-control"><br>
+                            <div class="form-group col-md-4">
+                                <button style="margin-left:10px" id="saveRole" class="btn btn-dark">Valider</button>
+                                <button id="annulerRole" class="btn btn-outline-danger">Annuler</button>
+                            </div>
+                        </div>
+                        <span id="errorRole" style="color:red;font-style:italic" ></span>
+                        <span id="succesRole" style="color:green" ></span>
+                    </form>
+
+                    <!-- Formulaire d'ajout dun nouveau Departement -->
+                    <form class="d-none" id="formAddDepartement" action="<?= site_url('departementControlleur/adddepartement'); ?>" method="post">
+                    <hr style="background-color:grey">
+                        <strong>Ajouter un Departement</strong>
+                        <div class="d-flex col-md-8">
+                            <input type="text" name="departement" placeholder="Libelle Departement" class="form-control"><br>
+                            <div class="form-group col-md-4">
+                                <button style="margin-left:10px" id="saveDepartement" class="btn btn-dark">Valider</button>
+                                <button id="annulerDepartement" class="btn btn-outline-danger">Annuler</button>
+                            </div>
+                        </div>
+                        <span id="errorDepartement" style="color:red;font-style:italic" ></span>
+                        <span id="succesDepartement" style="color:green" ></span>
                     </form>
                 </div>
 
             <div class="card" style="margin-top:2%;padding:20px">
                 <div class="card-header border-0">
-                <span class="mb-0">Liste des assets</span>
+                 <button id="addUser" class="btn btn-outline-dark btn-sm">Nouvel Utilisateur</button>
                 </div>
                 <div class="table-responsive" style="margin-top: 10px;">
 
@@ -62,15 +120,31 @@
                     <thead class="thead-light">
                     <tr>
                         <th>ID</th>
-                        <th>user</th>
+                        <th>Utilisateur</th>
                         <th>Email</th>
-                        <th>Phone 1</th>
-                        <th>Phone 2</th>
+                        <th>Phone</th>
+                        <th>Staff</th>
+                        <th>Fonction</th>
+                        <th>Departement</th>
+                        <th>Role</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody class="list" id="showdata">
                     </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>Utilisateur</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Staff</th>
+                        <th>Fonction</th>
+                        <th>Departement</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                    </tfoot>
                 </table>
                 </div>
             </div>
@@ -94,15 +168,218 @@
                     }
                 });
             });
+
+            //  Toggle l'input Role
+            $(document).on('click', '#ckeckRole', function(e){
+              let fm1 = document.getElementById('inputRole');
+              fm1.classList.toggle('d-none');
+            });
+
+              //  Afficher le formulaire d'ajout d'utilisateur
+              $(document).on('click', '#addUser', function(e){
+              let fm1 = document.getElementById('myform');
+              fm1.classList.remove('d-none');
+              let bt = document.getElementById('addUser');
+              bt.classList.add('d-none');
+            });
+
+            //   masquer le formulaire d'ajout User
+            $(document).on('click', '#annuler', function(e){
+                e.preventDefault();
+                $('#formAddUser')[0].reset();
+              let fr =document.getElementById('myform');
+              let bt = document.getElementById('addUser');
+              bt.classList.remove('d-none');
+              fr.classList.add('d-none');
+            });
+
+            
+              //  Afficher le formulaire d'ajout Role
+              $(document).on('click', '#addRole', function(e){
+                  e.preventDefault();
+              let fm1 = document.getElementById('formAddRole');
+              fm1.classList.remove('d-none');
+              let bt = document.getElementById('addRole');
+              bt.classList.add('d-none');
+            });
+
+            //   masquer le formulaire d'ajout Role
+            $(document).on('click', '#annulerRole', function(e){
+                e.preventDefault();
+                $('#formAddRole')[0].reset();
+              let fr =document.getElementById('formAddRole');
+              let bt = document.getElementById('addRole');
+              bt.classList.remove('d-none');
+              fr.classList.add('d-none');
+            });
+
+            //  Afficher le formulaire d'ajout Departement
+            $(document).on('click', '#addDepartement', function(e){
+                  e.preventDefault();
+              let fm1 = document.getElementById('formAddDepartement');
+              fm1.classList.remove('d-none');
+              let bt = document.getElementById('addDepartement');
+              bt.classList.add('d-none');
+            });
+
+            //   masquer le formulaire d'ajout Departement
+            $(document).on('click', '#annulerDepartement', function(e){
+                e.preventDefault();
+                $('#formAddDepartement')[0].reset();
+              let fr =document.getElementById('formAddDepartement');
+              let bt = document.getElementById('addDepartement');
+              bt.classList.remove('d-none');
+              fr.classList.add('d-none');
+            });
             
 
             listeUser();
+            listeRole();
+            listeDepartement();
+
+             // Fucntion qui recupere les donnees en bd (Liste Role)
+             function listeRole(){
+                    $.ajax({
+                        type: 'ajax',
+                        url:'<?= base_url() ?>assets_it.php/roleControlleur/showAllrole',
+                        async:false,
+                        dataType: 'json',
+                        success: function(data){
+                            console.log(data);
+                            var htmlRole = '';
+                            var i;
+                            for (i=0; i<data.length; i++) {
+                                htmlRole += '<option value="'+data[i].id_role+'"> '+data[i].libelle_role+' </option>';
+                            }
+                            $('#showdataRole').html(htmlRole);
+                        },
+                        error:function(){
+                            alert('Erreur! narrive pas a obteniries donnnees demandées')
+                        }
+                    });
+                }
+
+                  // Fucntion qui recupere les donnees en bd (Liste Departement)
+             function listeDepartement(){
+                    $.ajax({
+                        type: 'ajax',
+                        url:'<?= base_url() ?>assets_it.php/departementControlleur/showAlldepartement',
+                        async:false,
+                        dataType: 'json',
+                        success: function(data){
+                            console.log(data);
+                            var htmlDepartement = '';
+                            var i;
+                            for (i=0; i<data.length; i++) {
+                                htmlDepartement += '<option value="'+data[i].id_dept+'"> '+data[i].libelle_dept+' </option>';
+                            }
+                            $('#showdataDepartement').html(htmlDepartement);
+                        },
+                        error:function(){
+                            alert('Erreur! narrive pas a obteniries donnnees demandées')
+                        }
+                    });
+                }
+
+                    //Ajouter dun role
+            // -----------------------------------------------------------------------------------
+            $('#saveRole').click(function(e){
+                e.preventDefault();
+                var url = $('#formAddRole').attr('action');               
+                var data = $('#formAddRole').serialize();
+                //valider le formulaire
+
+                var role = $('input[name=role]');
+                var resultat = 0;
+
+                if(role.val()==''){
+                    $('#errorRole').html('Obligatoire').fadeIn().delay(2000).fadeOut('slow');
+                }else{
+                    $('#succesRole').html('Good').fadeIn().delay(2000).fadeOut('slow');
+                    resultat = 1;
+                }
+
+                if(resultat == 1){
+                    $.ajax({
+                    type: 'ajax',
+                    method:'post',
+                    url:url,
+                    data:data,
+                    async:false,
+                    dataType: 'json',
+                    success: function(response){
+                        if (response.success) {
+                            $('#formAddRole')[0].reset();
+                            if (response.type == 'update') {
+                                var type = 'Modifié';
+                            }else{
+                                var type = 'ajouté';
+                            }
+                            $('.alert-light').html('role '+ type).fadeIn().delay(2000).fadeOut('slow');
+                            listeRole();
+                        }else{
+                            alert('Erreur! Ce libelle Existe deja dans la bd');
+                        }
+                    },
+                    error:function(){
+                        alert('Impossible d\'effectuer l\'action');
+                    }
+                });
+                }
+            });
+
+             //Ajouter Departement
+            // -----------------------------------------------------------------------------------
+            $('#saveDepartement').click(function(e){
+                e.preventDefault();
+                var url = $('#formAddDepartement').attr('action');                
+                var data = $('#formAddDepartement').serialize();
+                //valider le formulaire
+
+                var departement = $('input[name=departement]');
+                var resultat = 0;
+
+                if(departement.val()==''){
+                    $('#errorDepartement').html('Champ requis').fadeIn().delay(2000).fadeOut('slow');
+                }else{
+                    $('#succesDepartement').html('').fadeIn().delay(2000).fadeOut('slow');
+                    resultat = 1;
+                }
+
+                if(resultat == 1){
+                    $.ajax({
+                    type: 'ajax',
+                    method:'post',
+                    url:url,
+                    data:data,
+                    async:false,
+                    dataType: 'json',
+                    success: function(response){
+                        if (response.success) {
+                            $('#formAddDepartement')[0].reset();
+                            if (response.type == 'update') {
+                                var type = 'Modifié';
+                            }else{
+                                var type = 'ajouté';
+                            }
+                            $('.alert-light').html('departement '+ type).fadeIn().delay(2000).fadeOut('slow');
+                            listeDepartement();
+                        }else{
+                            alert('Erreur! Ce libelle Existe deja dans la bd');
+                        }
+                    },
+                    error:function(){
+                        alert('Impossible d\'effectuer l\'action');
+                    }
+                });
+                }
+            });
 
         // Fucntion qui recupere les donnees en bd (Liste utilisateur)
         function listeUser(){
             $.ajax({
                 type: 'ajax',
-                url:'<?= base_url() ?>assets_it.php/userController/listeUser',
+                url:'<?= base_url() ?>assets_it.php/utilisateurController/listeUser',
                 async:false,
                 dataType: 'json',
                 success: function(data){

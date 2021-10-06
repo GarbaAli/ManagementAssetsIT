@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class fsseur_model extends CI_Model
+class userModel extends CI_Model
 {
 	protected $table = 'utilisateur';
 	

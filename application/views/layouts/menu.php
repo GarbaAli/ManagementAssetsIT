@@ -34,7 +34,8 @@
                 <li><a href="<?= base_url('assets_it.php/familleControlleur/index') ?>">Famille Materiels</a></li>
                 <li><a href="<?= base_url('assets_it.php/fsseurControlleur/index') ?>">Fournisseurs</a></li>
                 <hr><strong style="color:#7e9bc3;font: size 18px;">Administration</strong>
-                <li><a href="<?= base_url('assets_it.php/userControlleur/index') ?>">Utilisateurs</a></li>
+                <li><a href="<?= base_url('assets_it.php/utilisateurController/index') ?>">Utilisateurs</a></li>
+                <li><a href="<?= base_url('assets_it.php/departementControlleur/index') ?>">Departement</a></li>
                 <li><a href="<?= base_url('assets_it.php/roleControlleur/index') ?>">Roles</a></li>
                 
             </ul>
